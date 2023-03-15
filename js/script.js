@@ -2,9 +2,9 @@ const { createApp } = Vue;
 
 createApp ({
     data () {
-
         return {
             activeImg: 0,
+            hovering: false, // new property
             slides: [
                     {
                         image: 'img/01.webp',
@@ -29,8 +29,6 @@ createApp ({
                     }
             ]
         }
-
-
     },
     methods: {
         gotoPrev() {
@@ -46,10 +44,19 @@ createApp ({
             }
         },
         autoPlay() {
-            setInterval(this.gotoNext, 2500)
+            if (!this.hovering) { // check if not hovering
+                this.gotoNext();
+            }
+        },
+        mouseEnter() {
+            this.hovering = true;
+        },
+        mouseLeave() {
+            this.hovering = false;
         }
     },
     mounted() {
-        this.autoPlay();
+        setInterval(this.autoPlay, 2500)
     } 
 }).mount('#app')
+

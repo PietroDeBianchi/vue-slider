@@ -14,15 +14,16 @@
     <div id="app">
   
       <div class="container">
-        <div class="slider-wrapper">
+        <div class="slider-wrapper" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
   
-          <div class="item">
-            <img :src="slides[activeImg].image" :alt="slides[activeImg].title" />
-            <div class="text">
-              <h3>{{ slides[activeImg].title }}</h3>
-              <p>{{ slides[activeImg].text }}</p>
+            <div class="item">
+                <img :src="slides[activeImg].image" :alt="slides[activeImg].title"/>
+                <div class="text">
+                  <h3>{{ slides[activeImg].title }}</h3>
+                  <p>{{ slides[activeImg].text }}</p>
+                </div>
             </div>
-          </div>
+              
   
           <div class="thumbs">
             <div class="prev" @click="gotoPrev"></div>
