@@ -45,6 +45,11 @@ createApp ({
                 this.activeImg = 0;
             }
         },
-    }
-
+        autoPlay() {
+            setInterval(this.gotoNext, 2500)
+        }
+    },
+    mounted() {
+        this.autoPlay();
+    } 
 }).mount('#app')
