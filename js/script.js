@@ -4,7 +4,7 @@ createApp ({
     data () {
         return {
             activeImg: 0,
-            hovering: false, // new property
+            hovering: false, // hover property
             slides: [
                     {
                         image: 'img/01.webp',
@@ -32,31 +32,31 @@ createApp ({
     },
     methods: {
         gotoPrev() {
-            this.activeImg--;
-            if (this.activeImg < 0) {
-                this.activeImg = this.slides.length - 1;
+            this.activeImg--;  // decrease activeImg -1
+            if (this.activeImg < 0) {  // if activeImg becomes less than 0
+                this.activeImg = this.slides.length - 1;  // set activeImg to the last index of the slides array
             }
         },
         gotoNext () {
-            this.activeImg++;
-            if (this.activeImg == this.slides.length) {
-                this.activeImg = 0;
+            this.activeImg++;  // increase activeImg +1
+            if (this.activeImg == this.slides.length) {  // if activeImg reaches the end of the slides array
+                this.activeImg = 0;  // set activeImg to the first index of the slides array
             }
         },
         autoPlay() {
-            if (!this.hovering) { // check if not hovering
-                this.gotoNext();
+            if (!this.hovering) {  // check if not hovering over the slider
+                this.gotoNext();  // call gotoNext method to move to the next slide
             }
         },
-        mouseEnter() {
-            this.hovering = true;
+        mouseEnter() {  // method to handle mouseenter event
+            this.hovering = true;  // set hovering variable to true
         },
-        mouseLeave() {
-            this.hovering = false;
+        mouseLeave() {  // method to handle mouseleave event
+            this.hovering = false;  // set hovering variable to false
         }
     },
     mounted() {
-        setInterval(this.autoPlay, 2500)
-    } 
+        setInterval(this.autoPlay, 2500)  // call autoPlay method every 2.5 seconds
+    }     
 }).mount('#app')
 
